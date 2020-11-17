@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from .models import Item, OrderItem, Order, Address, Customer,signup2,UserProfile,SellerAccount,Item_by_seller,SellerAccount_requested,CATEGORY,Display2
+from .models import Item, OrderItem, Order, Address, Customer,signup2,UserProfile,SellerAccount,Item_by_seller,SellerAccount_requested,CATEGORY,Display2,cal_cat
 
 # from .models import SellerAccount
 
 admin.site.register(SellerAccount),
+admin.site.register(cal_cat),
 admin.site.register(SellerAccount_requested),
 
 admin.site.register(Item),

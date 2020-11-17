@@ -13,6 +13,7 @@ urlpatterns = [
     # path('SignUp',views.signup1,name='signup'),
     # path('product/<slug>/',productsDetailView.as_view(),name='product'),
     path('sell_with_us',views.sell_with_us,name='sell_with_us'),
+    path('calculater',views.calculater,name='calculater'),
     path('be_seller_approve/', views.be_seller_approve, name='be_seller_approve'),
     path('login',views.login,name='login'),
     # path('cart',views.cart,name='cart'),

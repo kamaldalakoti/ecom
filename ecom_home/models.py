@@ -235,3 +235,6 @@ class Item_by_seller(models.Model):
     #     return reverse("ecom_home:product", kwargs={
     #         'slug_by_seller': self.slug_by_seller
     #     })
+class cal_cat(models.Model):
+    category_product = models.CharField(max_length=100)
+    Category_price = models.FloatField()

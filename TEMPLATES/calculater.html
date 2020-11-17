@@ -1,0 +1,141 @@
+<style>
+    h1,
+    h3 {
+        font-size: 2rem!important;
+        font-weight: bolder!important;
+    }
+    
+    .sec {
+        position: relative;
+        /* top: 57px; */
+    }
+    
+    .sec2 {
+        border: 2px solid black;
+    }
+    
+    .sec3 {
+        text-align: center;
+    }
+    
+    .inpt {
+        margin-top: 3px;
+        border: 1px solid black;
+        width: 100px;
+        padding-left: 5px;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- icon css
+ -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<!-- base css static load -->
+
+<!-- base css static load -->
+<!-- tailblocks -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+<!-- side cat +++ -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
+<script>
+    $(document).ready(function() {
+        $('#select_box').on('change', function() {
+            $('#show_only').val(this.value);
+            // alert(this.value);
+
+        });
+    });
+</script>
+<section class="sec">
+    <h2 style="text-align: start;"><a href="/">Home</a></h2>
+    <h1 style="text-align: center; color: rgb(32, 119, 97); ">PRICING CALCULATER</h1>
+    <section class="sec2" id='sec2'>
+        <h3 style="text-align: center;">
+            Calculate your profit with your product
+        </h3>
+        <br>
+        <form action="">
+            <section id="" class="sec3">
+
+                Select product Catagory - <select name="cars" id="select_box">
+                    {% for item in data %} 
+        <option value="{{item.Category_price}}%">{{item.category_product}}</option>
+        
+        {% endfor %}
+             
+    </select> <input type="text" style="width: 50px;" id="show_only" disabled="">Marketplace fee for this catagory
+                <br> Enter product selling price- <input type="text" class="inpt"> include shiping charge
+                <p>20.00 fix price according to Product price range
+                    <!-- Button trigger modal -->
+                    <button type="button" class="" data-toggle="modal" data-target="#exampleModal">
+                        
+                        <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;" >
+                        </i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="static\media\pricing_fixed.jpg" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </p>
+                Enter product actuall price- <input type="text" class="inpt">
+                <p> Product weight- <input type="number" id="id-5" class="inpt " />Kg</p</p>
+
+
+                    <p>Volumetric weight- Length : <input type="number" placeholder="L in cm" class="inpt " id="id-1"> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"> Height : <input type="number" placeholder="H in cm" class="inpt "
+                            id="id-3"> Value :
+                        <input type="number" id="id-4" class="inpt " readonly />Kg</p>
+
+                    <script>
+                        $(function() {
+                            $("#id-1, #id-2, #id-3, id-5").keyup(function() {
+                                $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
+                                if ($("#id-4").val() < $("#id-5").val()) {
+                                    $("id-6").val() = $("#id-5").val()
+                                } else {
+                                    $("id-6").val() = $("#id-4").val()
+
+                                }
+
+                            });
+                        });
+                    </script>
+                    <input type="number" id="id-6" class="inpt " readonly />Kg</p>
+
+
+
+                <p><b>Total almorians fee - <output>sss</output></b></p>
+                <p><b>You Make : </b></p>
+                <p><b>Your profit : </b></p>
+        </form>
+        </section>
+    </section>
+</section>
+{% endblock body %}

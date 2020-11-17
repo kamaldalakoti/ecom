@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 # from ecom_home.models  import Customer,Products,Product_order,order
 from django.urls import reverse
-from .models import Item, OrderItem, Order, Address ,Item_by_seller,SellerAccount_requested , CATEGORY
+from .models import Item, OrderItem, Order, Address ,Item_by_seller,SellerAccount_requested , CATEGORY,cal_cat
 # , UserProfile
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -581,3 +581,10 @@ def be_seller_approve(request):
 def sell_with_us(request):
 
     return render(request, 'sell_with_us.html')     
+def calculater(request):
+    data = cal_cat.objects.all()
+    # print(data)
+
+
+
+    return render(request, 'calculater.html', {'data':data})     
