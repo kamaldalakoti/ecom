@@ -1,0 +1,53 @@
+<style>
+    .list-group {
+        position: relative !important;
+        top: 70px !important;
+    }
+</style>
+{% extends "base.html" %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
+
+<ul class="list-group">
+    {% for item in seller_item %} seller :
+    <li class="list-group-item">{{item.seller}}</li>
+    title :
+    <li class="list-group-item">{{item.title_by_seller}}</li>
+    price :
+    <li class="list-group-item">{{item.price_by_seller}}</li>
+    discount_price :
+    <li class="list-group-item">{{item.discount_price_by_seller}}</li>
+    slug :
+    <li class="list-group-item">{{item.slug_by_seller}}</li>
+    image : <img src="{{item.image_by_seller}}" width="30px" height="30px" alt=""> description :
+    <li class="list-group-item">{{item.description_by_seller}}</li>
+    ID :
+    <li class="list-group-item">{{item.seller.id}}</li>
+    ID2 :
+    <li class="list-group-item">{{item.id}}</li>
+    ID3 :
+    <li class="list-group-item">{{item.Category.id}}</li>
+    <li>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Click</label>
+
+            <input type="checkbox" name="approve" id="approve" value="True">
+            <input type="hidden" name="A" value="{{item.seller}}">
+            <input type="hidden" name="B" value="{{item.title_by_seller}}">
+            <input type="hidden" name="C" value="{{item.price_by_seller}}">
+            <input type="hidden" name="D" value="{{item.discount_price_by_seller}}">
+            <input type="hidden" name="E" value="{{item.slug_by_seller}}">
+            <input type="hidden" name="F" value="{{item.description_by_seller}}">
+            <input type="hidden" name="G" value="{{item.image_by_seller}}">
+            <input type="hidden" name="H" value="{{item.seller.id}}">
+            <input type="hidden" name="I" value="{{item.id}}">
+            <input type="hidden" name="J" value="{{ item.Category.id }}">
+            <br>
+            <button type="submit" class="btn btn-primary flote-right">Approve</button>
+        </form>
+    </li>
+    <hr>
+    <hr> {% endfor %}
+
+</ul>
+{% endblock body %}

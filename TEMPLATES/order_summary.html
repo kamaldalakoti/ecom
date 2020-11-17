@@ -1,0 +1,117 @@
+<style>
+    .table-responsive {
+        position: relative;
+        top: 76px;
+    }
+    
+    .gallery {
+        background: rgba(72, 208, 226, 0.452);
+    }
+    
+    .gallery-cell {
+        width: 100px;
+        height: 200px;
+        margin-right: 10px;
+        background: white;
+        /* counter-increment: gallery-cell; */
+    }
+    /* cell number */
+    
+    .gallery-cell:before {
+        display: block;
+        text-align: center;
+        /* content: counter(gallery-cell); */
+        line-height: 200px;
+        font-size: 80px;
+        color: white;
+    }
+</style>
+{% extends "base.html" %} {% block title %}SignUp{% endblock title %} {% block body %}
+<main>
+    <div class="container">
+
+        <div class="table-responsive text-nowrap">
+            <h2>Order Summary</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Item Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order_item in object.items.all %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ order_item.item.title }}</td>
+                        <td>{{ order_item.item.price }}</td>
+                        <td>
+                            <a href="{% url 'ecom_home:remove-single-item-from-cart' order_item.item.slug %}"><i class="fa fa-minus" aria-hidden="true"></i></a><b> {{ order_item.quantity }}</b>
+                            <a href="{% url 'ecom_home:add-to-cart' order_item.item.slug %}"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        </td>
+                        <td>
+                            {% if order_item.item.discount_price %} ${{ order_item.get_total_discount_item_price }}
+                            <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved }}</span> {% else %} ${{ order_item.get_total_item_price }} {% endif %}
+                            <a style='color: red;' href="{% url 'ecom_home:remove-from-cart' order_item.item.slug %}">
+                                <i class="fa fa-times float-right"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan='5'>Your cart is empty</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+                        </td>
+                    </tr>
+                    <!-- {% endfor %} {% if object.coupon %}
+                    <tr>
+                        <td colspan="4"><b>Coupon</b></td>
+                        <td><b>-${{ object.coupon.amount }}</b></td>
+                    </tr>
+                    {% endif %} -->
+                    {% if object.get_total %}
+                    <tr>
+                        <td colspan="4"><b>Order Total</b></td>
+                        <td><b>${{ object.get_total }}</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <a class='btn btn-warning float-right ml-2' href='/checkout/'>Proceed to checkout</a>
+                            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</main>
+<br>
+<br>
+<br>
+<div class="gallery js-flickity" style="margin-top: 20px; padding: 20px;" data-flickity-options='{ "wrapAround": true }'>
+    {% for item in object_list %}
+
+    <div class="gallery-cell">
+        <a href="{{  item.get_absolute_url }}"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQizks9gFO406Dui3SgDSfgdKti9txf2yDwpQ&usqp=CAU" width="100px" height="100px" class="card-img-top" alt="..."></a>
+        <p style="text-align: center; color: green;"><b>{{ item.title }}</b></p>
+        {% if item.discount_price != 0 %}
+        <p style="text-align: center; color: green; text-decoration-line: line-through;"><b>${{ item.price }}</b></p>
+        <p style="text-align: center; color: green;"><b>${{ item.discount_price }}</b></p> {% else %}
+        <p style="text-align: center; color: green;"><b>${{ item.price }}</b></p>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+
+
+</div>
+{% endblock body %}

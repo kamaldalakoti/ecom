@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block body%} {% load crispy_forms_tags %}
+
+<form method="POST" action="profile/" class="card-body">
+    {% csrf_token %}
+
+    <h3>Payment option</h3>
+
+    <div class="d-block my-3">
+
+        <div>
+            <!-- {{ form.payment_option }} -->
+            <!-- <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" required> -->
+            <!-- <label>COD</label> -->
+        </div>
+
+    </div>
+
+
+
+
+    <hr class="mb-4">
+    <button class="btn btn-primary btn-lg btn-block" type="submit">Place Your Order</button>
+
+</form>
+
+{% endblock body%}

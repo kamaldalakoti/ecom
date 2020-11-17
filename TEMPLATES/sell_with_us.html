@@ -1,0 +1,102 @@
+<style>
+    .nav_base {
+        display: none;
+    }
+    
+    .div_1 {
+        position: relative;
+        /* top: 57px; */
+        border: 2px solid red;
+    }
+    
+    .img_1 {
+        height: 300px;
+    }
+    
+    .A_a {
+        border: 1px solid gold;
+        background-color: #050a28;
+        height: 60px;
+    }
+    
+    .A_b {
+        background-color: #050a28;
+        border: 1px solid green;
+    }
+    
+    .A_a img {
+        height: 60px;
+        width: 60%;
+    }
+    
+    .A_b ul {
+        display: flex;
+        margin-right: 30%;
+        margin-left: 30%;
+    }
+    
+    .A_b li {
+        /* margin-right: 4%;     */
+        list-style: none;
+        margin-left: 4%;
+    }
+    
+    li :hover {
+        text-decoration: none;
+    }
+    
+    .A_b button {
+        margin-left: 20%;
+    }
+    
+    @media only screen and (max-width: 647px) {
+        .A_b button {
+            display: none;
+        }
+        .A_b li {
+            /* margin-right: 4%;     */
+            margin-left: 10%;
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: white!important;
+        }
+        .A_b ul {
+            margin-left: 2px;
+            margin-right: 2px;
+        }
+        .A_a img {
+            margin-left: 0px!important;
+            margin-right: 0px!important;
+            width: 100%!important;
+        }
+    }
+</style>
+{% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<div class="div_1">
+    <div class="A">
+        <div class="A_a">
+            <img src="static\media\logo_almora_service1.jpg" alt="" width="50%" height="60px" style='margin-left: 25%; margin-right: 25%;'>
+
+        </div>
+        <div class="A_b">
+            <ul>
+                <li class="3"><a href="">Sell</a></li>
+                <li class="3"><a href="">Services</a></li>
+                <li class="3"><a href="">FAQS</a></li>
+                <li class="3"><a href="">More</a></li>
+                <button type="button" class="btn btn-primary "><a href="{% url 'account_login' %}" style="color: honeydew; text-decoration: none;"> Already have a account  </a></button>
+                <!-- <li class="3"><a href=""><button class="primery">   </button></a></li> -->
+            </ul>
+
+        </div>
+    </div>
+    <img src="static\media\sell_with_us.jpg" alt="" class="img_1" width="100%" height="300px">
+    <img src="static\media\fee.jpg" alt="" class="img_1" width="100%" height="300px">
+</div>
+
+{% endblock body %}
