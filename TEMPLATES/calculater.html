@@ -1,8 +1,8 @@
 <style>
     h1,
     h3 {
-        font-size: 2rem!important;
-        font-weight: bolder!important;
+        font-size: 2rem !important;
+        font-weight: bolder !important;
     }
     
     .sec {
@@ -59,6 +59,31 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#browser').on('change', function() {
+            $('#show_only2').val(this.value);
+            // alert(this.value);
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#price1').on('keyup', function() {
+            function range(start, end) {
+                var ans = $('#price1').val(this.value);;
+                for (let i = 0; i <= 255; i++) {
+                    ans.push(i);
+                    var a = 5
+                }
+                return a;
+                return $('#show_only2').val(this.a);
+            }
+        });
+    });
+</script>
+
 <section class="sec">
     <h2 style="text-align: start;"><a href="/">Home</a></h2>
     <h1 style="text-align: center; color: rgb(32, 119, 97); ">PRICING CALCULATER</h1>
@@ -70,19 +95,54 @@
         <form action="">
             <section id="" class="sec3">
 
-                Select product Catagory - <select name="cars" id="select_box">
-                    {% for item in data %} 
-        <option value="{{item.Category_price}}%">{{item.category_product}}</option>
-        
-        {% endfor %}
-             
-    </select> <input type="text" style="width: 50px;" id="show_only" disabled="">Marketplace fee for this catagory
-                <br> Enter product selling price- <input type="text" class="inpt"> include shiping charge
+                Select product Catagory - <select name="cars" id="select_box" autofocus>
+                    {% for item in data %}
+                    <option value="{{item.Category_price}}%">{{item.category_product}}</option>
+
+                    {% endfor %}
+
+                </select > <input type="text" style="width: 50px;" id="show_only" disabled="">Marketplace fee for this catagory
+
+
+                <!--  -->
+                <!-- <label for="browser">Choose your browser from the list:</label>
+
+
+                <input list="browsers" name="browser" id="browser">
+                <datalist id="browsers" class="">
+                        {% for item in data %}
+                        <option  text="{{item.category_product}}" value="{{item.Category_price}}%" >{{item.Category_price}}%</option>
+                        
+                        {% endfor %}
+                    </datalist>
+                <input type="text" style="width: 50px;" id="show_only2" disabled="">Marketplace fee for this catagory -->
+
+                <!--  -->
+                <script>
+                    $(function() {
+                        $("#price1 , #inptZ, #inptM ").keyup(function() {
+                            function range(start, end) {
+                                var ans = $('#price1').val();;
+                                for (let i = 0; i <= 255; i++) {
+                                ans.push(i);
+                                var a = 5;
+                                $("#show_only3").val($ans);
+                }
+                
+            }
+                            // $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
+                            
+
+                        });
+                    });
+                </script>
+            
+                <br> Enter product selling price- <input type="number" id="price1" class="inpt"> include shiping charge
                 <p>20.00 fix price according to Product price range
                     <!-- Button trigger modal -->
                     <button type="button" class="" data-toggle="modal" data-target="#exampleModal">
-                        
-                        <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;" >
+
+                        <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
                         </i>
                     </button>
 
@@ -93,8 +153,8 @@
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 </div>
                                 <div class="modal-body">
                                     <img src="static\media\pricing_fixed.jpg" alt="">
@@ -106,11 +166,10 @@
 
                 </p>
                 Enter product actuall price- <input type="text" class="inpt">
-                <p> Product weight- <input type="number" id="id-5" class="inpt " />Kg</p</p>
+                <p> Product weight- <input type="number" id="id-5" class="inpt " />Kg</p< /p>
 
 
-                    <p>Volumetric weight- Length : <input type="number" placeholder="L in cm" class="inpt " id="id-1"> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"> Height : <input type="number" placeholder="H in cm" class="inpt "
-                            id="id-3"> Value :
+                    <p> Length : <input type="number" placeholder="L in cm" class="inpt " id="id-1"><br> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"><br> Height : <input type="number" placeholder="H in cm" class="inpt " id="id-3"><br>                        Volumetric weight- :
                         <input type="number" id="id-4" class="inpt " readonly />Kg</p>
 
                     <script>
@@ -127,7 +186,40 @@
                             });
                         });
                     </script>
-                    <input type="number" id="id-6" class="inpt " readonly />Kg</p>
+                    Shipping Zone-: <select name="" style=" margin-top: 5px;" id="inptZ">
+                        <option value="Local">Local</option>
+                        <option value="Zonal">Zonal</option>
+                        <option value="National">National</option>
+                    </select>
+                <br> Shipping Mode-: <select name="" style=" margin-top: 5px;" id="inptM">
+                        <option value="almorians">Ship thought almorians</option>
+                        <option value="Local">Self Ship</option>
+                    </select>
+                <br>
+                <input type="text" style="width: 50px; margin-top: 5px;" id="show_only3" disabled="">Shipping price
+                <button type="button" class="" data-toggle="modal" data-target="#exampleModal">
+
+                    <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
+                    </i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="static\media\pricing_fixed.jpg" alt="">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
 
 
