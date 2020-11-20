@@ -172,13 +172,15 @@
         });
     });
 </script>
-
+<script>
+</script>
 
 
 <script>
     $(document).ready(function() {
         $('#select_box').on('change', function() {
             $('#show_only').val(this.value);
+
             // alert(this.value);
 
         });
@@ -195,7 +197,7 @@
 </script>
 
 
-<section class="sec">
+<section class="sec" onload="myload()">
     <h2 style="text-align: start;"><a href="/">Home</a></h2>
     <h1 style="text-align: center; color: rgb(32, 119, 97); ">PRICING CALCULATER</h1>
     <section class="sec2" id='sec2'>
@@ -207,12 +209,14 @@
             <section id="" class="sec3">
 
                 Select product Catagory - <select name="cars" id="select_box" autofocus>
+                    <option value="">select</option>
                     {% for item in data %}
-                    <option value="{{item.Category_price}}%">{{item.category_product}}</option>
+                    <option value="{{item.Category_price}}">{{item.category_product}}</option>
 
                     {% endfor %}
 
-                </select > <input type="text" style="width: 50px;" id="show_only" disabled="">Marketplace fee for this catagory
+                </select >
+                <br> <input type="number" style="width: 50px;" id="show_only" disabled="">% Marketplace fee for this catagory
 
 
                 <!--  -->
@@ -260,18 +264,148 @@
 
                 </p>
                 Enter product actuall price- <input type="number" class="inpt">
-                <p> Product weight- <input type="number" id="id-8" class="inpt " />Kg</p</p>
+                <p> Product weight- <input type="number" placeholder="W in kg" class="inpt " id="id-proW">Kg</p</p>
 
 
-                    <p> Length : <input type="number" placeholder="L in cm" class="inpt " id="id-1"><br> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"><br> Height : <input type="number" placeholder="H in cm" class="inpt " id="id-3"><br>                        Volumetric weight- :
-                        <input type="number" id="id-4" name="volW" class="inpt " readonly />Kg</p>
+                    <p> Length : <input type="number" placeholder="L in cm" class="inpt" id="id-1"><br> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"><br> Height : <input type="number" placeholder="H in cm" class="inpt " id="id-3"><br>                       
+                        Volumetric weight- :
+                        <input type="number" id="id-4" name="volW" class="inpt "  />Kg</p>
 
                     <script>
                         $(function() {
-                            $("#id-1, #id-2, #id-3, id-5").keyup(function() {
+                            $("#id-1, #id-2, #id-3, #id-5, #id-proW, #inptZ").keyup(function() {
                                 var id4 = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
-                                $("id-6").val() = $("#id-4").val();
-                                $("#id-7").val() = $("#id-1").val();
+                                // $("#id-6").val() = $("#id-4").val();
+                                window.fixp = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
+
+                                if($('#id-proW').val() > $('#id-4').val())
+                                {
+                                    $("#id-7").val($("#id-proW").val());
+                                }
+                                else{
+                                    $("#id-7").val($("#id-4").val());
+                                }
+
+                                 $('#inptZ').on('change', function() {
+                                var ans2;
+                                window.shippingc = ans2
+                                    var cw = $("#id-7").val()
+                                    var sipz = $("#inptZ").val()
+                                    if (sipz == "Local") {
+                                        if (cw > 0 && cw <= 0.5) {
+                                            ans2 = 38
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 0.5 && cw <= 1) {
+                                            ans2 = 41
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1 && cw <= 1.5) {
+                                            ans2 = 53
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1.5 && cw <= 2) {
+                                            ans2 = 61
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 2 && cw <= 3) {
+                                            ans2 = 68
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 3 && cw <= 10) {
+                                            ans2 = 72
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 10) {
+                                            ans2 = 76
+                                            $('#sp').val(ans2);
+
+                                        }
+                                    }
+                                    if (sipz == "Zonal") {
+                                        if (cw > 0 && cw <= 0.5) {
+                                            ans2 = 45
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 0.5 && cw <= 1) {
+                                            ans2 = 45+18
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1 && cw <= 1.5) {
+                                            ans2 = 45+18+16
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1.5 && cw <= 2) {
+                                            ans2 = 45+18+16+17
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 2 && cw <= 3) {
+                                            ans2 = 45+18+16+17+11
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 3 && cw <= 10) {
+                                            ans2 = 45+18+16+17+11+9
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 10) {
+                                            ans2 = 45+18+16+17+11+9+5
+                                            $('#sp').val(ans2);
+
+                                        }
+                                    }
+                                    if (sipz == "National") {
+                                        if (cw > 0 && cw <= 0.5) {
+                                            ans2 = 60
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 0.5 && cw <= 1) {
+                                            ans2 = 60+25
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1 && cw <= 1.5) {
+                                            ans2 = 60+25+27
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 1.5 && cw <= 2) {
+                                            ans2 = 60+25+27+21
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 2 && cw <= 3) {
+                                            ans2 = 68
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 3 && cw <= 10) {
+                                            ans2 = 72
+                                            $('#sp').val(ans2);
+
+                                        }
+                                        if (cw > 10) {
+                                            ans2 = 76
+                                            $('#sp').val(ans2);
+
+                                        }
+                                    }
+                                 
+                                });
+
+                                 
 
                                 // if ($id4 < $("#id-5").val()) {
                                 //     $("id-7").val() = $("#id-5").val()
@@ -280,20 +414,15 @@
 
                                 // }
 
-                            });
-                        });
-                    </script>
-                    <script>
-                        $(function() {
-                            $("#id-1").keyup(function() {
-                                $("#id-7").val() = $("#id-1").val()
-                               
+                                //$("#id-7").val($("#id-1")).val();
+                                
 
                             });
                         });
                     </script>
+                    
                     Considered weight- :
-                    <input type="number" id="id-7" class="inpt " readonly />Kg</p>
+                    <input type="number" id="id-7" class="inpt" readonly />Kg</p>
                     Shipping Zone-: <select name="" style=" margin-top: 5px;" id="inptZ">
                         <option value="Local">Local</option>
                         <option value="Zonal">Zonal</option>
@@ -304,7 +433,7 @@
                         <option value="self">Self Ship</option>
                     </select>
                 <br>
-                <input type="text" style="width: 50px; margin-top: 5px;" id="show_only3" disabled="">Shipping price
+                <input type="text" style="width: 50px; margin-top: 5px;" id="sp" disabled="">Shipping price
                 <button type="button" class="" data-toggle="modal" data-target="#exampleModal1">
 
                     <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
@@ -328,11 +457,53 @@
                         </div>
                     </div>
                 </div>
+                <script>
+                    $(" #id-1").keyup(function()
+                        // function myload() {
+                        {
+                            // alert("runing");
+                            // alert($('#id-4').val());
+                            var e = $('#show_only3').val()
+
+                            var a = parseInt($('#price1').val())
+                            var b = parseInt($('#id-4').val())
+                            var d = parseInt($('#show_only').val())
+                            var f = parseInt($('#sp').val())
+                            var marf = ((a * d) / 100)
+                            var h = $('#inptM').val()
+                            if (h == 'self') {
+
+                                var g = (marf + +e)
+                                var c = (g * 0.18)
+                                var valu = (+g + +c)
+                                $('#Taf').val(valu)
+
+                            } else {
+                                var g = (marf + +e + +f)
+                                var c = (g * 0.18)
+                                var valu = (+g + +c)
+                                alert(h);
+                                $('#Taf').val(valu)
+
+                            }
+                            $('#youM').val(a - $('#Taf').val())
 
 
 
-                <p><b>Total almorians fee - <output>sss</output></b></p>
-                <p><b>You Make : </b></p>
+
+
+                            // var a = window.shippingc
+                            // var a = document.getElementById('show_only').val()
+                            // $('#show_only').val(this.value);
+
+                        });
+                </script>
+
+
+                <!-- <button id="btn">Check</button> -->
+
+                <p><b>Total almorians fee - <input type="number" id="Taf" class="inpt" readonly /></b></p>
+                <p><b>You Make : <input type="number" id="youM" class="inpt" readonly /> </b></p>
                 <p><b>Your profit : </b></p>
         </form>
         </section>
