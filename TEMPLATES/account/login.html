@@ -8,9 +8,12 @@
         position: relative;
         top: 70px;
     }
+    .nav_base{
+        display: none!important;
+    }
 </style>
 {% extends "account/layout_card.html" %} {% load account %} {% load crispy_forms_tags %} {% load i18n %} {% load socialaccount %} {% block head_title %}{% trans "Sign In" %}{% endblock %} {% block content %}
-
+<h5><a href="/">Home</a></h5>
 <h5 class="card-title">
     {% trans "Sign In" %}
 </h5>

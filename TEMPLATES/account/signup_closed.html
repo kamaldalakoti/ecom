@@ -1,9 +1,14 @@
+<style>
+  .nav_base{
+        display: none!important;
+    }
+</style>
 {% extends "account/layout_card.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
-
+<h5><a href="/">Home</a></h5>
 {% block content %}
   <h5 class="card-title">
     {% trans "Sign Up Closed" %}
