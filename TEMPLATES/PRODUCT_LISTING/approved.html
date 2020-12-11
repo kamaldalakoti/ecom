@@ -1,0 +1,54 @@
+
+
+{% extends "PRODUCT_LISTING/navbar.html" %}
+{% block body %}
+
+
+<!-- product list -->
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+
+            {% for item in item %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden" href="">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ item.title }}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{item.seller}}</h2>
+                    <p class="mt-1">$16.00</p>
+                    <p class="mt-1">Stock status :{% if item.stock == True %} In stock {% else %} Out of Stock {% endif %}
+                    </p>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+
+                        <input type="radio" name="stock" id="stock" value="True"> In Stock<br>
+                        <input type="radio" name="stock" id="stock" value="False">Out of Stock<br>
+                        <!-- <input type="checkbox" name="stock" id="stock" value="True">
+                        <br>
+                        <label>Out of Stock</label>
+                        <input type="checkbox" name="stock" id="stock" value="False"> -->
+                        <!-- <input type="hidden" name="A" value="{{item.seller}}">
+                        <input type="hidden" name="B" value="{{item.title_by_seller}}">
+                        <input type="hidden" name="C" value="{{item.price_by_seller}}">
+                        <input type="hidden" name="D" value="{{item.discount_price_by_seller}}">
+                        <input type="hidden" name="E" value="{{item.slug_by_seller}}">
+                        <input type="hidden" name="F" value="{{item.description_by_seller}}">
+                        <input type="hidden" name="G" value="{{item.image_by_seller}}">
+                        <input type="hidden" name="H" value="{{item.seller.id}}"> -->
+                        <input type="hidden" name="I" value="{{item.id}}">
+                        <!-- <input type="hidden" name="J" value="{{ item.Category.id }}"> -->
+                        <br>
+                        <button type="submit" class="btn btn-primary flote-right">submit</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+</section>
+
+<!-- product list -->
+{% endblock body %}

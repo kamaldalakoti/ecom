@@ -8,48 +8,19 @@
 {% extends "base.html" %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
 
 
-<form class="form1" method="POST" action="">
+<form class="form1" method="POST">
     {% csrf_token %}
-    <!-- <div class="form-group">
-        <label for="inputAddress">Product Name</label>
 
-        <input type="text" class="form-control" name="seller" id="seller" placeholder="Product name" required>
-    </div> -->
-    <!-- <div class="form-group">
-        <label for="inputAddress">Price</label>
-
-        <input type="number" step="any" class="form-control" name="price_by_seller" id="price_by_seller" placeholder="Price">
-    </div>
-
-    <div class="form-group">
-        <label for="inputAddress">Discount</label>
-        <input type="number" step="any" class="form-control" name="discount_price_by_seller" id="discount_price_by_seller ">
-
-        <p style="color: red;">' If Discount in not available put it 0 '</p>
-
-    </div> -->
     <div class="form-group">
         <label>Name</label>
-        <input type="text" class="form-control" name="seller_name" id="seller_name" placeholder="Product Id">
+        <input type="text" class="form-control" name="seller_name" id="seller_name">
     </div>
-    <!-- <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="inputCity">About Product</label>
-            <textarea class="form-control" name="description_by_seller" id="description_by_seller" cols="30" rows="10"></textarea>
-            <input type="text" class="form-control" id="inputCity"> 
-        <div class="form-group col-md-6">
-            <label for="inputCity">Product Pic</label>
-             <input type="image" class="form-control" id="inputCity">
-            <input type="file" name="image_by_seller" id="image_by_seller" class="form-control">
-        </div>
 
-
-    </div> -->
     <div class="form-group">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
-          Check me out
+          Request to be seller
         </label>
         </div>
     </div>

@@ -1,0 +1,299 @@
+<style>
+    .model_form input {
+
+        border: 1px solid black;
+        border-radius: 5px;
+        padding-left: 3px;
+
+    }
+</style>
+<style>
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even){background-color: #f2f2f2}
+    </style>
+{% extends "base.html" %} {% block body%}
+<section style="display: flex; position: relative; top: 80px;  justify-content: center; text-align: center;">
+    <div class="flex flex-wrap form-row w-100" style="border: 2px solid black">
+        <div class="col-md-9 " style="border: 2px solid red;">
+            <h3>CheckOut</h3>
+            <hr>
+            <div class="form-row w-100">
+                <div class="col-md-6 my-2">
+                    <button class="btn btn-primary" disabled>Use default Address</button>
+
+                </div>
+                <hr>
+                <div class="col-md-6 my-2">
+                    <script>
+                        $('#myModal').on('shown.bs.modal', function () {
+                            $('#myInput').trigger('focus')
+                        })
+                    </script>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                        Add Address
+                    </button>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <div class="form-row model_form">
+
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Street address :</label>
+                                            <input type="text " name="street_address" value="{{item.street_address}}">
+
+                                        </div>
+
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Apartment : </label>
+                                            <input type="text " name="apartment_address"
+                                                value="{{item.apartment_address}}">
+
+
+                                        </div>
+                                        <hr>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Landmark : </label>
+                                            <br>
+                                            <input type="text " name="landmark" value="{{item.landmark}}">
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">City :</label>
+                                            <br>
+                                            <input type="text " name="city" value="{{item.city}}">
+
+
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">State :</label>
+                                            <br>
+                                            <input type="text " name="state" value="{{item.state}}">
+
+
+
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Country :</label>
+                                            <br>
+                                            <input type="text " name="country" value="{{item.country}}">
+
+
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Pin Code : </label>
+                                            <br>
+                                            <input type="text " name="zip_code" value="{{item.zip_code}}">
+                                            {% for item in address_data %}
+                                            <input type="text " value="{{item.id}}" name="ID" hidden>
+                                            {% endfor %}
+
+
+                                        </div>
+                                        <div class="col-md-6 my-2">
+                                            <label for="">Phone : </label>
+                                            <br>
+                                            <input type="text " placeholder="{{item.landmark}}" disabled>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <h3>Address</h3>
+
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-row model_form ">
+                    {% for item in address_data %}
+                    <!-- {% if address_data %}
+                    <p>ADD</p>
+                    {% endif %} -->
+                    <div class="col-md-6 my-2">
+                        Street address <br> <input type="text " name="street_address" value="{{item.street_address}}">
+
+                    </div>
+                    <hr>
+                    <div class="col-md-6 my-2">
+                        Apartment <br> <input type="text " name="apartment_address" value="{{item.apartment_address}}">
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        Landmark <br> <input type="text " name="landmark" value="{{item.landmark}}">
+
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        City <br> <input type="text " name="city" value="{{item.city}}">
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        State <br> <input type="text " name="state" value="{{item.state}}">
+
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        Country <br> <input type="text " name="country" value="{{item.country}}">
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        Pin Code <br> <input type="text " name="zip_code" value="{{item.zip_code}}">
+                        <input type="text " value="{{item.id}}" name="ID" hidden>
+
+
+                    </div>
+                    <div class="col-md-6 my-2">
+                        Phone <br> <input type="text " placeholder="{{item.landmark}}" disabled>
+
+
+                    </div>
+                    <div class="form-row w-100" style="justify-content: center; ">
+
+                        <button type="submit" name="Address_submit" class="btn btn-primary my-2 w-50">Update Address</button>
+                    </div>
+                    {% endfor %}
+
+
+
+                </div>
+
+
+
+                <!-- <button type="submit" class="btn btn-primary my-2">Add Address</button> -->
+
+            </form>
+
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <div class="form-row" style="justify-content: center;">
+                    <h3>
+                        Order Detail
+                    </h3>
+                    {% for item in address_data %}
+
+                    <input type="text " name="user_id" value="{{item.user.id}}" hidden>
+                    <input type="text " name="street_address" value="{{item.street_address}}" hidden>
+                    <input type="text " name="apartment_address" value="{{item.apartment_address}}" hidden>
+                    <input type="text " name="landmark" value="{{item.landmark}}" hidden>
+                    <input type="text " name="city" value="{{item.city}}" hidden>
+                    <input type="text " name="state" value="{{item.state}}" hidden>
+                    <input type="text " name="country" value="{{item.country}}" hidden>
+                    <input type="text " name="zip_code" value="{{item.zip_code}}" hidden>
+                    <input type="text " value="{{item.id}}" name="ID" hidden>
+                    <input type="text " placeholder="{{item.landmark}}" disabled hidden>
+
+
+
+
+                    {% endfor %}
+                    
+                    
+                    <br>
+                    <hr>
+                    <div class="form-row w-100 " style="justify-content: center;">
+
+
+                        <div style="overflow-x:auto;">
+                            <table>
+                                <tr>
+                                    <th>Check Item</th>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+
+                                </tr>
+                                  {% for item in order_item_data %}
+
+                                <tr>
+                    <input type="text " name="seller_ID" value="{{item.item.seller.id}}" hidden>
+                    <input type="text " name="item" value="{{item.item.id}}" hidden>
+                    <input type="text " name="quantity" value="{{item.quantity}}" hidden>
+
+                                    <!-- <td><input type="checkbox" value="{{item.item }}"  name="Check" id=""></td> -->
+                                    <td><input type="radio" value="{{item.id}}"  name="Check" id=""></td>
+                                    <td>{{item.item }}</td>
+                                    <td>{{item.item.price }}</td>
+
+                                </tr>
+                                {% endfor %}
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="form-row" style="justify-content: center;">
+                    <h3>
+                        Payment option
+                    </h3>
+
+
+
+                </div>
+                <div class="form-row" style="justify-content: center;">
+
+
+
+
+                    <button type="submit" name="Order_submit" class="btn btn-primary my-2 w-50">Place Order</button>
+
+
+                </div>
+            </form>
+
+
+        </div>
+
+        <div class="col-md-3" style="border: 2px solid red;">
+            {% include "order_snippet.html" %}
+
+        </div>
+
+    </div>
+</section>
+{% endblock body %}

@@ -1,0 +1,169 @@
+<style>
+    .list-group {
+        position: relative !important;
+        top: 70px !important;
+    }
+
+    .nav_base {
+        display: none !important;
+    }
+</style>
+{% extends "base.html" %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %}
+{% block body %}
+
+<ul class="form-row">
+    <!-- <h1>{{item.slug_by_seller}}</h1> -->
+    <div class="col-md-4">
+
+        seller :
+        <li class="list-group-item">{{object.seller}}</li>
+    </div>
+    <div class="col-md-4">
+
+        Title :
+        <li class="list-group-item">{{object.title_by_seller}}</li>
+    </div>
+    <div class="col-md-4">
+
+        Category  :
+        <li class="list-group-item">{{object.Category }}</li>
+    </div>
+    <div class="col-md-4">
+
+        Sub Category  :
+        <li class="list-group-item">{{object.Sub_Category }}</li>
+    </div>
+    <div class="col-md-4">
+
+        Type  :
+        <li class="list-group-item">{{object.Type }}</li>
+    </div>
+    
+    <div class="col-md-4">
+
+        Product Id :
+        <li class="list-group-item">{{object.slug_by_seller}}</li>
+    </div>
+    <div class="col-md-4">
+
+        Brand :
+        <li class="list-group-item">{{object.Brand}}</li>
+    </div>
+    <div class="col-md-4">
+
+        MRP :
+        <li class="list-group-item">{{object.MRP}}</li>
+    </div>
+    <div class="col-md-4">
+        price :
+        <li class="list-group-item">{{object.price_by_seller}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Discount_price :
+        <li class="list-group-item">{{object.discount_price_by_seller}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Pincode :
+        <li class="list-group-item">{{object.Pincode_pro}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Seller_SKU :
+        <li class="list-group-item">{{object.Seller_SKU}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Produt_tax_code :
+        <li class="list-group-item">{{object.Produt_tax_code}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Shipping Mode :
+        <li class="list-group-item">{{object.Shipping_Mode}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Shipping Mode :
+        <li class="list-group-item">{{object.Shipping_Mode}}</li>
+
+    </div>
+    <div class="col-md-4">
+        Description :
+        <li class="list-group-item">{{object.description_by_seller}}</li>
+
+    </div>
+
+
+</ul>
+<hr>
+<div class="form-row">
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+    <div class="col-md-3">
+        image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+    </div>
+        <div class="col-md-3">
+            image : <img src="{{object.image_by_seller}}" width="200px" height="70px" alt=""> 
+        </div>
+    
+
+</div>
+
+
+    <!-- ID :
+    <li class="list-group-item" hidden>{{object.seller.id}}</li>
+    ID2 :
+    <li class="list-group-item" hidden>{{object.id}}</li>
+    ID3 :
+    <li class="list-group-item" hidden>{{object.Category.id}}</li> -->
+    
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Click</label>
+
+            <input type="checkbox" name="approve" id="approve" value="True">
+            <input type="hidden" name="seller" value="{{object.seller}}">
+            <input type="hidden" name="title_by_seller" value="{{object.title_by_seller}}">
+            <input type="hidden" name="price_by_seller" value="{{object.price_by_seller}}">
+            <input type="hidden" name="discount_price_by_seller" value="{{object.discount_price_by_seller}}">
+            <input type="hidden" name="slug_by_seller11" value="{{object.slug_by_seller}}">
+            <input type="hidden" name="description_by_seller" value="{{object.description_by_seller}}">
+            <input type="hidden" name="image_by_seller" value="{{object.image_by_seller}}">
+            <input type="hidden" name="seller_id" value="{{object.seller.id}}">
+            <input type="hidden" name="slug_by_seller1" value="{{object.id}}">
+            <!-- <input type="text" name="slug_by_seller1" value="{{object.id}}"> -->
+            
+            <input type="hidden" name="Category" value="{{ object.Category.id }}">
+            <input type="hidden" name="Sub_Category" value="{{ object.Sub_Category.id }}">
+            <input type="hidden" name="Type" value="{{ object.Type.id }}">
+            <input type="hidden" name="Brand" value="{{ object.Brand }}">
+            <input type="hidden" name="MRP" value="{{ object.MRP }}">
+            <input type="hidden" name="Pincode_pro" value="{{ object.Pincode_pro}}">
+            <input type="hidden" name="Seller_SKU" value="{{ object.Seller_SKU }}">
+            <input type="hidden" name="Produt_tax_code" value="{{ object.Produt_tax_code }}">
+            <input type="hidden" name="Shipping_Mode" value="{{ object.Shipping_Mode.id }}">
+            <!-- <input type="text" name="Shipping_Mode" value="{{ object.Shipping_Mode.id }}"> -->
+            <br>
+            <button type="submit" class="btn btn-primary flote-right">Approve</button>
+        </form>
+    
+    <hr>
+    <hr>
+
+{% endblock body %}

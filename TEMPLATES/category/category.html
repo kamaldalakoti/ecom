@@ -1,0 +1,75 @@
+<style>
+    .sec_pdl{
+        display: none!important;
+    }
+</style>
+{% extends "PRODUCT_LISTING/navbar.html" %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- profile link -->
+
+<!-- alrt -->
+
+<!-- alrt -->
+<!-- tailwind -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+<!-- tailwind -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<div>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible  show my-0 messages" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+<!-- back btn -->
+<input type=button value="Previous Page" onClick="javascript:history.go(-1);">
+<!-- back btn -->
+
+
+
+    <hr>
+    
+
+<div class="form-group">
+    <label for="Category">Category :</label>
+    
+    
+    <select name="category" id="category" onchange="location = this.value;">
+        {% for item in object_list %}  
+        <option value="{{item.get_cat}}"><a href="">{{ item.Category }} </a></option>
+        
+        {% endfor %}
+        
+    </select>
+    
+</div>
+        
+    
+   
+    
+    
+
+
+<!-- top nav js  -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<!-- top nav js  -->
+{% endblock body %}

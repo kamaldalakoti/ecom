@@ -1,0 +1,215 @@
+{% load static %} {% load cart_template_tags %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- icon css -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- icon css
+ -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!-- base css static load -->
+    <link rel="stylesheet" href="{% static 'css/main_base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main_index.css' %}" />
+    <!-- base css static load -->
+    <!-- tailblocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
+    <!-- side cat +++ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- side cat +++ -->
+
+    <!-- tailblocks -->
+    <style>
+        .nav_base {
+            display: inline-grid;
+            background-color: white!important;
+            border: 2px solid black;
+            grid-template-columns: 30px auto auto auto;
+        }
+        
+        .list_item li {
+            border: none;
+            padding-left: 15px;
+            /* padding-top: 2px; */
+        }
+        /* search bar */
+        
+        .div_search {
+            height: 50px;
+            display: flex;
+            width: 100%;
+            /* border: 2px solid black; */
+        }
+        
+        #nav-search {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            /* border: 2px solid purple; */
+        }
+        
+        #nav-left {
+            width: 100%;
+            display: flex;
+            height: 60px;
+            /* border: 2px solid blue; */
+        }
+        
+        #nav-left-next {
+            height: 40px;
+            /* border: 2px solid green; */
+        }
+        
+        .nav-form {
+            width: 100%;
+            height: 40px;
+            /* border: 2px solid pink; */
+            display: flex;
+        }
+        
+        .search-input input {
+            /* background-color: #021260; */
+            background-color: white;
+            border-top: 2px solid #021260;
+            border-bottom: 2px solid #021260;
+            height: 31px;
+            padding-left: 7px;
+            width: 100%;
+            color: white;
+        }
+        
+        .nav-input {
+            /* background-color: #021260; */
+            background-color: white;
+            height: 31px;
+            /* width: 35px; */
+            border: 2px solid #021260;
+            border-left: none;
+            border-radius: 0px 20px 20px 0px;
+        }
+        
+        #nav-cat-id {
+            background-color: #021260;
+            color: white;
+            display: flex;
+            margin-right: 0px;
+            width: 50px;
+            height: 31px;
+            top: 2.5px;
+            padding-left: 5px;
+            /* border-top-left-radius: 20px; */
+            /* border-bottom-left-radius: 20px; */
+        }
+        /* search bar */
+        
+        .list_item {
+            /* float: right; */
+            display: inline-grid;
+            grid-template-columns: auto auto auto auto;
+        }
+        
+        #select1 {
+            /* background-color: #021260; */
+            border: 2px solid white;
+            height: 31px;
+            border-radius: 20px;
+            padding-left: 7px;
+            padding-right: 7px;
+            color: black;
+            border: 1px solid #021260;
+        }
+    </style>
+    <style>
+        /* side nav plus minus */
+        
+        .messages {
+            position: relative;
+            top: 60px;
+        }
+        
+        #main {
+            position: relative;
+            top: 40px;
+            transition: margin-left .5s;
+        }
+        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+        /* @media screen and (max-height: 450px) {
+        .sidebar {
+            padding-top: 15px;
+        }
+        .sidebar a {
+            font-size: 18px;
+        }
+    } */
+        /* side open close */
+        /* side nav */
+        
+        #lnk:hover {
+            color: rgb(197, 197, 50);
+        }
+    </style>
+    <style>
+        .card {
+            position: relative;
+            top: 70px;
+        }
+    </style>
+    <!-- side cat -->
+
+    <!-- for alrt -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
+"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- side cat -->
+    <title>E COM</title>
+
+</head>
+
+<body>
+
+    <!-- <div class="messages"> -->
+
+    <!-- alert -->
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible  show my-0 messages" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+    <!-- alert -->
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <!-- new silidr bar js and css  -->
+    <link rel="stylesheet " href="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.css ">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.0.0/flickity.pkgd.js "></script>
+    <!-- new silidr bar js and css  -->
+    <!-- The JavaScript -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript"></script>
+
+
+</body>
+{% block body%} {%endblock body%}
+
+</html>

@@ -1,0 +1,68 @@
+{% extends "PRODUCT_LISTING/navbar.html" %}
+{% block body %}
+<div>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible  show my-0 messages" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+
+<!-- product list -->
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-24 mx-auto">
+        <h1><b> Pending</b></h1>
+        <div class="flex flex-wrap -m-4">
+           
+            {% for item in seller_item %}
+            
+            {% if item.title_by_seller and item.price_by_seller and item.discount_price_by_seller and item.Produt_tax_code and item.Brand and item.Pincode_pro and item.MRP and item.Shipping_Mode and item.Seller_SKU and item.description_by_seller  != None %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden" href="">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ item.title_by_seller }}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
+                    <p style="color: green;">This Product will be Approved soon</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden" href="">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ item.title_by_seller }}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">The Catalyzer</h2>
+                    <p><a style="color: red;" href="{{ item.get_absolute1_url }}"> Fill All Field </a></p>
+                </div>
+            </div>
+            
+            
+            {% endif %}
+
+            
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+<!-- product list -->
+<!-- top nav js  -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<!-- top nav js  -->
+{% endblock body %}

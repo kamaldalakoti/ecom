@@ -1,15 +1,20 @@
 from django.contrib import admin
 
-from .models import Item, OrderItem, Order, Address, Customer,signup2,UserProfile,SellerAccount,Item_by_seller,SellerAccount_requested,CATEGORY,Display2,cal_cat
+from .models import Item, OrderItem, Order, Address, Customer,signup2,UserProfile,SellerAccount,Item_by_seller,SellerAccount_requested,CATEGORY,Display2,cal_cat,seller_address,SUB_CATEGORY,SUB_CATEGORY_Type,SHIPPING_MODE,ORDERS
 
 # from .models import SellerAccount
 
 admin.site.register(SellerAccount),
+admin.site.register(seller_address),
 admin.site.register(cal_cat),
 admin.site.register(SellerAccount_requested),
 
 admin.site.register(Item),
+admin.site.register(ORDERS),
 admin.site.register(CATEGORY),
+admin.site.register(SUB_CATEGORY),
+admin.site.register(SUB_CATEGORY_Type),
+admin.site.register(SHIPPING_MODE),
 admin.site.register(Item_by_seller),
 admin.site.register(OrderItem),
 admin.site.register(Order),

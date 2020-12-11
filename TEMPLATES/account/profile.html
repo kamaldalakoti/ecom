@@ -95,11 +95,11 @@
         <div class="col-md-offset-2 col-md-8 col-lg-offset-3 col-lg-6">
             <div class="well profile">
                 <div class="col-sm-12">
+                    {% for item in add_data %}
                     <div class="col-xs-12 col-sm-8">
                         <h2>{{ user.get_username }}</h2>
                         <p><strong>Email: </strong> {{user.email}}</p>
-                        <p><strong>Address: {{ data2 }} </strong> </p>
-                        <p><strong>Address: {{ user }} </strong> </p>
+                        <p><strong>Address: {{ item.street_address }}/{{item.apartment_address}}/{{item.zip_code}}</strong> </p>
                         <!-- <p><strong>Skills:{{ data }} </strong> -->
                         <p><strong>Last Login: {{ user.last_login }} </strong>
                             <!-- <span class="tags">html5</span>
@@ -108,6 +108,7 @@
                                 <span class="tags">bootstrap3</span> -->
                         </p>
                     </div>
+                    {% endfor %}
                     <div class="col-xs-12 col-sm-4 text-center">
                         <figure>
                             <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle img-responsive">
@@ -137,9 +138,9 @@
                     <div class="col-xs-12 col-sm-4 emphasis">
                         <h2><strong> {{ request.user|cart_item_count }} </strong></h2>
                         <p><small>Cart Item</small></p>
-                        <i class="material-icons">
+                        <a href="{% url 'ecom_home:order-summary' %}" class="btn btn-success btn-block"><i class="material-icons">
                             add_shopping_cart
-                        </i><a href="{% url 'ecom_home:order-summary' %}" class="btn btn-success btn-block">Cart </a>
+                        </i> Cart </a>
                     </div>
                     <div class="col-xs-12 col-sm-4 emphasis">
                         <h2><strong> {{ request.user|cart_item_count }} </strong></h2>

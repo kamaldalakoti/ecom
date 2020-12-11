@@ -1,0 +1,202 @@
+{% extends "PRODUCT_LISTING/navbar.html" %}
+{% block body %}
+<div>
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible  show my-0 messages" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} {% endif %}
+</div>
+<!-- product listing page -->
+
+<form class="form1" method="POST" action="">
+    {% csrf_token %}
+
+    <h4>Basic Detail </h4>
+    <hr>
+    <div class="form-row">
+
+
+
+        <div class="col-md-4">
+            <label for="Category">Category :</label>
+
+            
+            <input type="text"   placeholder="{{object.Category}}" disabled >
+            <input type="text" value="{{object.Category.id}}" name="Category" placeholder="{{object.Category}}" hidden >
+        </div>
+
+        <div class="col-md-4">
+
+            <label for="Category">Sub_Category :</label>
+            
+            <input type="text"  placeholder="{{object.Sub_Category}}" disabled>
+            <input type="text" value="{{object.Sub_Category.id}}" name="Sub_Category" hidden>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <label for="Category">Type :</label>
+            <input type="text"  placeholder="{{object.Type}}" disabled>
+            <input type="text" value="{{object.Type.id}}" name="Type" hidden>
+        </div>
+    </div>
+    <hr>
+
+    <div class="form-row">
+
+        <div class="col-md-6" hidden>
+            
+
+            <input type="text" class="form-control" name="seller_item_ID" id="seller_item_ID" value="{{object.id}}"
+                placeholder="Product name" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress">Product Name</label>
+
+            <input type="text" class="form-control" name="title_by_seller" id="title_by_seller" value="{{object.title_by_seller}}"
+                placeholder="Product name" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress">Brand</label>
+
+            <input type="text" class="form-control" name="Brand" id="Brand" value="{{object.Brand}}" placeholder="Brand name" required>
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="col-md-6">
+            <label for="inputAddress">MRP</label>
+
+            <input type="number" step="any" class="form-control" name="MRP" id="MRP" value="{{object.MRP}}" placeholder="MRP">
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress">Price</label>
+
+            <input type="number" step="any" class="form-control" name="price_by_seller" value="{{object.price_by_seller}}"
+             id="price_by_seller"
+                placeholder="Price">
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="col-md-6">
+            <label for="inputAddress">Discount</label>
+            <input type="number" step="any" class="form-control" value="{{object.discount_price_by_seller}}" name="discount_price_by_seller"
+                id="discount_price_by_seller ">
+
+            <p style="color: red;">' If Discount in not available put it 0 '</p>
+
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress">Pincode</label>
+            <input type="text" step="any" class="form-control" value="{{object.Pincode_pro}}" name="Pincode_pro" id="Pincode_pro ">
+
+
+
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="col-md-6">
+            <label>Product Id</label>
+            <input type="text" class="form-control" name="slug_by_seller" id="slug_by_seller" value="{{object.slug_by_seller}}" placeholder="Product Id">
+        </div>
+        <div class="col-md-6">
+            <label>Seller_SKU</label>
+            <input type="text" class="form-control" name="Seller_SKU" id="Seller_SKU" value="{{object.Seller_SKU}}" placeholder="Seller_SKU Id">
+        </div>
+
+    </div>
+    <div class="form-row">
+
+        <div class="col-md-6">
+            <label>Produt_tax_code</label>
+            <input type="text" class="form-control" name="Produt_tax_code" value="{{object.Produt_tax_code}}" id="Produt_tax_code"
+                placeholder="Produt Tax Code ">
+        </div>
+        <div class="form-group ">
+
+            <label for="Category">Shipping Mode :</label>
+
+            <select name="Shipping_Mode"    class="col-md-6" style="height: 37px; width: 100%;" id="Shipping_Mode">
+                <option value="{{object.Shipping_Mode.id}}" >{{object.Shipping_Mode}}</option>
+
+                {% for item in object_list4 %}
+                <option value="{{item.id}}">{{ item.Shipping_Mode }} </option>
+                {% endfor %}
+
+            </select>
+
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity">About Product</label>
+            <textarea class="form-control" name="description_by_seller" value="{{object.description_by_seller}}" id="description_by_seller" cols="30"
+                rows="10"></textarea>
+            <!-- <input type="text" class="form-control" id="inputCity"> -->
+        </div>
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="inputCity">Top</label>
+                    <!-- <input type="image" class="form-control" id="inputCity"> -->
+                    <input type="file" name="image_by_seller" value="{{object.image_by_seller}}" id="image_by_seller" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity">Product Pic</label>
+                    <!-- <input type="image" class="form-control" id="inputCity"> -->
+                    <input type="file" name="image_by_seller1" value="{{object.title_by_seller}}" id="image_by_seller" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity">Product Pic</label>
+                    <!-- <input type="image" class="form-control" id="inputCity"> -->
+                    <input type="file" name="image_by_seller1" value="{{object.title_by_seller}}" id="image_by_seller" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity">Product Pic</label>
+                    <!-- <input type="image" class="form-control" id="inputCity"> -->
+                    <input type="file" name="image_by_seller1" value="{{object.title_by_seller}}" id="image_by_seller" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity">Product Pic</label>
+                    <!-- <input type="image" class="form-control" id="inputCity"> -->
+                    <input type="file" name="image_by_seller1" id="image_by_seller" class="form-control">
+                </div>
+            </div>
+
+
+        </div>
+        <hr style="border-top: 1px dashed black;">
+        <br>
+        <br>
+            <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+</form>
+
+<!-- top nav js  -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<!-- top nav js  -->
+{% endblock body %}

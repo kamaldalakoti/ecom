@@ -1,0 +1,63 @@
+{% extends "ORDERS/navbar.html" %}
+{% block body %}
+
+<!-- product listing page -->
+
+<!-- product list -->
+<hr>
+<div style="text-align: center; text-decoration: underline 2px black; color:rgb(13, 90, 64);"><h1>All Orders</h1></div>
+
+
+<section class="text-gray-700 body-font">
+    <div class="container px-5 py-3 mx-auto">
+        <div class="flex flex-wrap -m-4">
+
+            {% for item in item %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden" href="">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ item.title }}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{item.seller}}</h2>
+                    <p class="mt-1">$16.00</p>
+                    <p class="mt-1">Stock status :{% if item.stock == True %} In stock {% else %} Out of Stock {% endif %}
+                    </p>
+
+                    
+                </div>
+            </div>
+            {% endfor %}
+            <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <a class="block relative h-48 rounded overflow-hidden" href="">
+                    <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
+                </a>
+                <div class="mt-4">
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{ item.title }}</h3>
+                    <h2 class="text-gray-900 title-font text-lg font-medium">{{item.seller}}</h2>
+                    <p class="mt-1">$16.00</p>
+                    <p class="mt-1">Stock status :{% if item.stock == True %} In stock {% else %} Out of Stock {% endif %}
+                    </p>
+
+                    
+                </div>
+            </div>
+            
+
+        </div>
+</section>
+
+<!-- product list -->
+<!-- top nav js  -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+{% endblock body %}
+<!-- top nav js  -->

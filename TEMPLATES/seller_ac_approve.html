@@ -20,7 +20,7 @@
     image : <img src="{{item.image_by_seller}}" width="30px" height="30px" alt=""> description :
     <li class="list-group-item">{{item.description_by_seller}}</li>
     ID :
-    <li class="list-group-item">{{user.id}}</li>
+    <li class="list-group-item">{{item.user.id}}</li>
     ID2 :
     <li class="list-group-item">{{item.id}}</li>
     <li>
@@ -38,8 +38,8 @@
             <input type="hidden" name="G" value="{{item.image_by_seller}}">
             <input type="hidden" name="H" value="{{item.seller.id}}">
             <input type="hidden" name="I" value="{{item.id}}">-->
-            <input type="hidden" name="BID" value="{{item.id}}">
-            <input type="hidden" name="AID" value="{{user.id}}">
+            <input type="hidden" name="BID" id='BID' value="{{item.id}}">
+            <input type="hidden" name="AID" id="AID" value="{{item.user.id}}">
             <br>
             <button type="submit" class="btn btn-primary flote-right">Approve</button>
         </form>

@@ -1,29 +1,97 @@
+<!-- top nav -->
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .topnav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .topnav .icon {
+        display: none;
+    }
+
+    @media screen and (max-width: 12000px) {
+        .topnav a:not(:first-child) {
+            display: none;
+        }
+
+        .topnav a.icon {
+            float: right;
+            display: block;
+        }
+    }
+
+    @media screen and (max-width: 12000px) {
+        .topnav.responsive {
+            position: relative;
+        }
+
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+    }
+</style>
+<!-- top nav -->
+
 <style>
     h1,
     h3 {
         font-size: 2rem !important;
         font-weight: bolder !important;
     }
-    
-    .sec {
+
+    /* .sec {
         position: relative;
         /* top: 57px; */
-    }
-    
-    .sec2 {
+    /* } */
+
+    /* .sec2 {
         border: 2px solid black;
     }
-    
+ */
     .sec3 {
         text-align: center;
-    }
-    
+    } 
+
     .inpt {
         margin-top: 3px;
         border: 1px solid black;
         width: 100px;
         padding-left: 5px;
     }
+    
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -40,8 +108,10 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css">
 <!-- base css static load -->
 
@@ -49,12 +119,13 @@
 <!-- tailblocks -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
 <!-- side cat +++ -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+{% load i18n %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
 <script>
-    $(document).ready(function() {
-        $('#inptM').on('change', function() {
+    $(document).ready(function () {
+        $('#inptM').on('change keyup', function () {
             var ans;
-            $("#price1 , #inptZ, #inptM ").keyup(function() {
+            $("#price1 , #inptZ, #inptM ").on('change keyup', function () {
                 var p = $("#price1").val()
                 var z = $("#inptM").val()
                 if (z == "almorians") {
@@ -112,10 +183,10 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
-        $('#inptM').on('change', function() {
+    $(document).ready(function () {
+        $('#inptM').on('change', function () {
             var ans;
-            $("#price1 , #inptZ, #inptM ").keyup(function() {
+            $("#price1 , #inptZ, #inptM ").keyup(function () {
                 var p = $("#price1").val()
                 var z = $("#inptM").val()
                 if (z == "almorians") {
@@ -177,8 +248,8 @@
 
 
 <script>
-    $(document).ready(function() {
-        $('#select_box').on('change', function() {
+    $(document).ready(function () {
+        $('#select_box').on('change', function () {
             $('#show_only').val(this.value);
 
             // alert(this.value);
@@ -187,8 +258,8 @@
     });
 </script>
 <script>
-    $(document).ready(function() {
-        $('#browser').on('change', function() {
+    $(document).ready(function () {
+        $('#browser').on('change', function () {
             $('#show_only2').val(this.value);
             // alert(this.value);
 
@@ -196,252 +267,305 @@
     });
 </script>
 
+<div class="topnav" id="myTopnav">
+    <a href="/" class="active">Home</a>
+    <a href="/sell_with_us" class="active">Sell with us</a>
+    <!-- <a href="/seller_product_post" id="a1">Product Listing</a>
+    <a href="#" id="a2">Inventory</a>
+    <a href="#" id="a3">Orders</a>
+    <a href="#" id="a4">Pricing</a>
+    <a href="#" id="a5">Advertising</a>
+    <a href="#" id="a6">Reports</a>
+    <a href="#" id="a7">My Account</a> -->
 
-<section class="sec" onload="myload()">
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+<section class="sec"  onload="myload()">
     <h2 style="text-align: start;"><a href="/">Home</a></h2>
     <h1 style="text-align: center; color: rgb(32, 119, 97); ">PRICING CALCULATER</h1>
-    <section class="sec2" id='sec2'>
+    <section class="sec2 " id='sec2'>
         <h3 style="text-align: center;">
             Calculate your profit with your product
         </h3>
         <br>
         <form action="">
-            <section id="" class="sec3">
+            <section id="" class="sec3  px-10 ">
 
-                Select product Catagory - <select name="cars" id="select_box" autofocus>
+                Select product Catagory - <select name="select_box" id="select_box" class="w-full " autofocus>
                     <option value="">select</option>
                     {% for item in data %}
                     <option value="{{item.Category_price}}">{{item.category_product}}</option>
 
                     {% endfor %}
 
-                </select >
-                <br> <input type="number" style="width: 50px;" id="show_only" disabled="">% Marketplace fee for this catagory
+                </select>
+                <br> <input type="number" style="width: 50px;" id="show_only" disabled="">% Marketplace fee for this
+                catagory
+<br>
+<hr>
+<br>
+                <div class="flex row w-full " style="justify-content: center;">
+                    <div class="col w-full" >
 
 
-                <!--  -->
-                <!-- <label for="browser">Choose your browser from the list:</label>
+
+                        Shipping Mode-: <select name="" style=" margin-top: 5px; border: 1px solid black;" id="inptM">
+                            <option value="">Select</option>
+                            <option value="almorians">Ship thought almorians</option>
+                            <option value="self">Self Ship</option>
+                        </select>
+                    </div>
+
+                    <div class="col w-full" ">
+
+                        Enter product selling price- <input type="number" id="price1" class="inpt"> include shiping
+                        charge
+                        <p><b><input type="text" style="width: 25px; margin-top: 5px; color:cornflowerblue;"
+                                    id="show_only3" disabled="">₹</b> fix price according to Product price range
+                            <!-- Button trigger modal -->
+                            <button type="button" class="" data-toggle="modal" data-target="#exampleModal">
+
+                                <i class="fa fa-question-circle"
+                                    style="font-size:24px ; margin-top:2px ;color: cadetblue;">
+                                </i>
+                            </button>
+
+                            <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Product price range</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="static\media\pricing_fixed.jpg" alt="">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        </p>
+                    </div>
+
+                </div>
+                <br>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <p> weight : <br> <input type="number" placeholder="W in kg" class="inpt w-full" id="id-proW">
+                            </p</p>
+
+                    </div>
+                    <div class="col">
+                        <p> Length : <br> <input type="number" placeholder="L in cm" class="inpt w-full" id="id-1">
+                    </div>
+                    <div class="col">
+                        Width : <br> <input type="number" placeholder="W in cm" class="inpt w-full" id="id-2">
+                    </div>
+                    <div class="col">
+                        Height : <br> <input type="number" placeholder="H in cm" class="inpt w-full" id="id-3">
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <div class="row w-full">
+
+                    <div class="col w-full">
+                        Volumetric weight : <br>
+                        <input type="number" id="id-4" name="volW" class="inpt w-full" /></p>
+                    </div>
+                    <div class="col w-full">
+                        Considered weight- :
+                        <input type="number" id="id-7" class="inpt w-full   " readonly /></p>
+                    </div>
+                </div>
 
 
-                <input list="browsers" name="browser" id="browser">
-                <datalist id="browsers" class="">
-                        {% for item in data %}
-                        <option  text="{{item.category_product}}" value="{{item.Category_price}}%" >{{item.Category_price}}%</option>
-                        
-                        {% endfor %}
-                    </datalist>
-                <input type="text" style="width: 50px;" id="show_only2" disabled="">Marketplace fee for this catagory -->
 
-                <!--  -->
-                
-            
-                <br> Enter product selling price- <input type="number" id="price1" class="inpt"> include shiping charge
-                <p><b><input type="text" style="width: 25px; margin-top: 5px; color:cornflowerblue;" id="show_only3" disabled="">₹</b> fix price according to Product price range
-                    <!-- Button trigger modal -->
-                    <button type="button" class="" data-toggle="modal" data-target="#exampleModal">
 
+                <script>
+                    $(function () {
+                        $("#id-1, #id-2, #id-3, #id-5, #id-proW, #inptZ").keyup(function () {
+                            var id4 = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
+                            // $("#id-6").val() = $("#id-4").val();
+                            window.fixp = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
+
+                            if ($('#id-proW').val() > $('#id-4').val()) {
+                                $("#id-7").val($("#id-proW").val());
+                            } else {
+                                $("#id-7").val($("#id-4").val());
+                            }
+
+                            $('#inptZ').on('change', function () {
+                                var ans2;
+                                window.shippingc = ans2
+                                var cw = $("#id-7").val()
+                                var sipz = $("#inptZ").val()
+                                if (sipz == "Local") {
+                                    if (cw > 0 && cw <= 0.5) {
+                                        ans2 = 38
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 0.5 && cw <= 1) {
+                                        ans2 = 41
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1 && cw <= 1.5) {
+                                        ans2 = 53
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1.5 && cw <= 2) {
+                                        ans2 = 61
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 2 && cw <= 3) {
+                                        ans2 = 68
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 3 && cw <= 10) {
+                                        ans2 = 72
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 10) {
+                                        ans2 = 76
+                                        $('#sp').val(ans2);
+
+                                    }
+                                }
+                                if (sipz == "Zonal") {
+                                    if (cw > 0 && cw <= 0.5) {
+                                        ans2 = 45
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 0.5 && cw <= 1) {
+                                        ans2 = 45 + 18
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1 && cw <= 1.5) {
+                                        ans2 = 45 + 18 + 16
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1.5 && cw <= 2) {
+                                        ans2 = 45 + 18 + 16 + 17
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 2 && cw <= 3) {
+                                        ans2 = 45 + 18 + 16 + 17 + 11
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 3 && cw <= 10) {
+                                        ans2 = 45 + 18 + 16 + 17 + 11 + 9
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 10) {
+                                        ans2 = 45 + 18 + 16 + 17 + 11 + 9 + 5
+                                        $('#sp').val(ans2);
+
+                                    }
+                                }
+                                if (sipz == "National") {
+                                    if (cw > 0 && cw <= 0.5) {
+                                        ans2 = 60
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 0.5 && cw <= 1) {
+                                        ans2 = 60 + 25
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1 && cw <= 1.5) {
+                                        ans2 = 60 + 25 + 27
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 1.5 && cw <= 2) {
+                                        ans2 = 60 + 25 + 27 + 21
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 2 && cw <= 3) {
+                                        ans2 = 68
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 3 && cw <= 10) {
+                                        ans2 = 72
+                                        $('#sp').val(ans2);
+
+                                    }
+                                    if (cw > 10) {
+                                        ans2 = 76
+                                        $('#sp').val(ans2);
+
+                                    }
+                                }
+
+                            });
+
+
+
+                            // if ($id4 < $("#id-5").val()) {
+                            //     $("id-7").val() = $("#id-5").val()
+                            // } else {
+                            //     $("id-7").val() = $("#id-4").val()
+
+                            // }
+
+                            //$("#id-7").val($("#id-1")).val();
+
+
+                        });
+                    });
+                </script>
+<br>
+                <div class="row w-full" style="text-align: center;">
+                    <div class="col">
+
+
+                        <h4> Shipping Zone :</h4> <br>
+                        <select name="" class="w-full col " style=" margin-left: 8px; border: 1px solid black;"
+                            id="inptZ">
+                            <option value="">select</option>
+                            <option value="Local">Local</option>
+                            <option value="Zonal">Zonal</option>
+                            <option value="National">National</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" class="w-full" style="width: 50px; margin-top: 5px; border: 1px solid black;" id="sp" disabled="">Shipping price
+                    <button type="button" class="" data-toggle="modal" data-target="#exampleModal1">
+    
                         <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
                         </i>
                     </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Product price range</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="static\media\pricing_fixed.jpg" alt="">
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </p>
-                Enter product actuall price- <input type="number" class="inpt">
-                <p> Product weight- <input type="number" placeholder="W in kg" class="inpt " id="id-proW">Kg</p</p>
-
-
-                    <p> Length : <input type="number" placeholder="L in cm" class="inpt" id="id-1"><br> Width : <input type="number" placeholder="W in cm" class="inpt " id="id-2"><br> Height : <input type="number" placeholder="H in cm" class="inpt " id="id-3"><br>                       
-                        Volumetric weight- :
-                        <input type="number" id="id-4" name="volW" class="inpt "  />Kg</p>
-
-                    <script>
-                        $(function() {
-                            $("#id-1, #id-2, #id-3, #id-5, #id-proW, #inptZ").keyup(function() {
-                                var id4 = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
-                                // $("#id-6").val() = $("#id-4").val();
-                                window.fixp = $("#id-4").val((+$("#id-1").val() * +$("#id-2").val() * +$("#id-3").val()) / 5000);
-
-                                if($('#id-proW').val() > $('#id-4').val())
-                                {
-                                    $("#id-7").val($("#id-proW").val());
-                                }
-                                else{
-                                    $("#id-7").val($("#id-4").val());
-                                }
-
-                                 $('#inptZ').on('change', function() {
-                                var ans2;
-                                window.shippingc = ans2
-                                    var cw = $("#id-7").val()
-                                    var sipz = $("#inptZ").val()
-                                    if (sipz == "Local") {
-                                        if (cw > 0 && cw <= 0.5) {
-                                            ans2 = 38
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 0.5 && cw <= 1) {
-                                            ans2 = 41
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1 && cw <= 1.5) {
-                                            ans2 = 53
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1.5 && cw <= 2) {
-                                            ans2 = 61
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 2 && cw <= 3) {
-                                            ans2 = 68
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 3 && cw <= 10) {
-                                            ans2 = 72
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 10) {
-                                            ans2 = 76
-                                            $('#sp').val(ans2);
-
-                                        }
-                                    }
-                                    if (sipz == "Zonal") {
-                                        if (cw > 0 && cw <= 0.5) {
-                                            ans2 = 45
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 0.5 && cw <= 1) {
-                                            ans2 = 45+18
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1 && cw <= 1.5) {
-                                            ans2 = 45+18+16
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1.5 && cw <= 2) {
-                                            ans2 = 45+18+16+17
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 2 && cw <= 3) {
-                                            ans2 = 45+18+16+17+11
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 3 && cw <= 10) {
-                                            ans2 = 45+18+16+17+11+9
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 10) {
-                                            ans2 = 45+18+16+17+11+9+5
-                                            $('#sp').val(ans2);
-
-                                        }
-                                    }
-                                    if (sipz == "National") {
-                                        if (cw > 0 && cw <= 0.5) {
-                                            ans2 = 60
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 0.5 && cw <= 1) {
-                                            ans2 = 60+25
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1 && cw <= 1.5) {
-                                            ans2 = 60+25+27
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 1.5 && cw <= 2) {
-                                            ans2 = 60+25+27+21
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 2 && cw <= 3) {
-                                            ans2 = 68
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 3 && cw <= 10) {
-                                            ans2 = 72
-                                            $('#sp').val(ans2);
-
-                                        }
-                                        if (cw > 10) {
-                                            ans2 = 76
-                                            $('#sp').val(ans2);
-
-                                        }
-                                    }
-                                 
-                                });
-
-                                 
-
-                                // if ($id4 < $("#id-5").val()) {
-                                //     $("id-7").val() = $("#id-5").val()
-                                // } else {
-                                //     $("id-7").val() = $("#id-4").val()
-
-                                // }
-
-                                //$("#id-7").val($("#id-1")).val();
-                                
-
-                            });
-                        });
-                    </script>
-                    
-                    Considered weight- :
-                    <input type="number" id="id-7" class="inpt" readonly />Kg</p>
-                    Shipping Zone-: <select name="" style=" margin-top: 5px;" id="inptZ">
-                        <option value="Local">Local</option>
-                        <option value="Zonal">Zonal</option>
-                        <option value="National">National</option>
-                    </select>
-                <br> Shipping Mode-: <select name="" style=" margin-top: 5px;" id="inptM">
-                        <option value="almorians">Ship thought almorians</option>
-                        <option value="self">Self Ship</option>
-                    </select>
-                <br>
-                <input type="text" style="width: 50px; margin-top: 5px;" id="sp" disabled="">Shipping price
-                <button type="button" class="" data-toggle="modal" data-target="#exampleModal1">
-
-                    <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
-                    </i>
-                </button>
+                </div>
+                
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal1" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal1" tabindex="-2" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -457,56 +581,121 @@
                         </div>
                     </div>
                 </div>
+                <br>
+                <hr>
+                <div class="row " style="justify-content: center;">
+                    <div class="col w-full" style="justify-content: center;" > 
+
+                        <p><b>Enter product actuall price : <br><input type="number" class="inpt w-50" id="ac"></b></p>
+                    </div>
+                </div>
+                <div class="row " >
+                    <div class="col w-full" > 
+
+                        <button onclick='return false;' style="padding: 2px; width: 200px; margin: 5px;" class="btn btn-primary"
+                        id="ac3">Calculate</button>
+                    </div>
+                </div>
+                
+                
                 <script>
-                    $(" #id-1").keyup(function()
-                        // function myload() {
-                        {
-                            // alert("runing");
-                            // alert($('#id-4').val());
-                            var e = $('#show_only3').val()
+                    $("#ac3").click(function ()
+                    // $("#ac3, #id-1, #id-2,#id-3 , #show_only, #show_only3 , #ac").click(function()
 
-                            var a = parseInt($('#price1').val())
-                            var b = parseInt($('#id-4').val())
-                            var d = parseInt($('#show_only').val())
-                            var f = parseInt($('#sp').val())
-                            var marf = ((a * d) / 100)
-                            var h = $('#inptM').val()
-                            if (h == 'self') {
+                    // function myload() {
+                    {
+                        // alert("runing");
+                        // alert($('#id-4').val());
+                        var e = $('#show_only3').val()
 
-                                var g = (marf + +e)
-                                var c = (g * 0.18)
-                                var valu = (+g + +c)
-                                $('#Taf').val(valu)
+                        var a = parseInt($('#price1').val())
+                        var b = parseInt($('#id-4').val())
+                        var d = parseInt($('#show_only').val())
+                        var f = parseInt($('#sp').val())
+                        var marf = ((a * d) / 100)
+                        var h = $('#inptM').val()
+                        if (h == 'self') {
 
-                            } else {
-                                var g = (marf + +e + +f)
-                                var c = (g * 0.18)
-                                var valu = (+g + +c)
-                                alert(h);
-                                $('#Taf').val(valu)
+                            var g = (marf + +e)
+                            var c = (g * 0.18)
+                            var valu = (+g + +c)
+                            $('#Taf').val(valu)
 
-                            }
-                            $('#youM').val(a - $('#Taf').val())
+                        } else {
+                            var g = (marf + +e + +f)
+                            var c = (g * 0.18)
+                            var valu = (+g + +c)
+                            // alert(h);
+                            $('#Taf').val(valu)
+
+                        }
+                        var ac = $('#ac').val()
+                        $('#youM').val(a - $('#Taf').val())
+                        $('#youP').val($('#youM').val() - ac)
 
 
 
 
 
-                            // var a = window.shippingc
-                            // var a = document.getElementById('show_only').val()
-                            // $('#show_only').val(this.value);
+                        // var a = window.shippingc
+                        // var a = document.getElementById('show_only').val()
+                        // $('#show_only').val(this.value);
 
-                        });
+                    });
                 </script>
 
+                <br>    
+                <hr>
+                <br>
+                <div class="row" style="justify-content: center;">
+                    <div class="col">
+                        <p><b>Total almorians fee : <br> <input type="number" id="Taf" class="inpt w-full" readonly />
+                            <br> including 18% GST
+                        </b></p>
+                    </div>
+                    <div class="col">
+                        <p><b>You Make : <br> <input type="number" id="youM" class="inpt w-full" readonly /> </b></p>
+                    </div>
+                    <div class="col">
+                        <p><b>Your profit : <br> <input type="number" id="youP" class="inpt w-full" readonly /> </b></p>
+                    </div>
 
-                <!-- <button id="btn">Check</button> -->
 
-                <p><b>Total almorians fee - <input type="number" id="Taf" class="inpt" readonly /></b></p>
-                <p><b>You Make : <input type="number" id="youM" class="inpt" readonly /> </b></p>
-                <p><b>Your profit : </b></p>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="row" style="text-align: center; justify-content: center;" >
+                    <div class="col " >
+                        <p style="color: red;"> Don't Have an Account? </p>
+                        <a href="/signup"><button class="btn btn-primary w-full"><a href="/signup">Register Now</a></button></a> .
+                    </div>
+                </div>
+                
+
+                
+            </section>
         </form>
-        </section>
     </section>
+
 </section>
+<br>
+
+
+<!-- <section>
+
+    
+</section> -->
+<!-- top nav -->
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+<!-- top nav -->
 {% endblock body %}
