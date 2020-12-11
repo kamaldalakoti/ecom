@@ -68,7 +68,7 @@ FIREBASE_ORM_CERTIFICATE = 'static\protean-sensor-278302-firebase-adminsdk-c67u8
 
 # db = firebase.database()
 # firebase
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
