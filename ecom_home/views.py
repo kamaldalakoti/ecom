@@ -31,7 +31,7 @@ from django.views.generic.edit import FormMixin
 #     return render(request, 'index.html',context )
 
 # firebase 
-import pyrebase
+
 
 # default_app = firebase_admin.initialize_app()
 # config = {
