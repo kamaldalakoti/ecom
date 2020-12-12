@@ -49,10 +49,15 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+
+
+
+
 # STRIPE_PUBLIC_KEY = config('pk_test_51Hei18AlscERxMKmLir2ST5nttbBanqfNmv4sinecEx8xlehYTa4DQhi4xwjsHKW9ytXQqHOpYmXXFkZIuEkvXYE00fbEYoJWQ')
 # STRIPE_SECRET_KEY = config('sk_test_51Hei18AlscERxMKmZLBAS2kh7kQuisaZqYxGI8ukH5YLeochFMiMDtPqT17yumgNCLOfaA4ZSdjRgktZcoSl41PY00oBbqAe82')
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
