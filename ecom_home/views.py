@@ -66,6 +66,8 @@ def signup1(request):
     return render(request, 'accounts/signup.html',data)    
 def login(request):
     return render(request, 'account/login.html' )
+def logout(request):
+    return render(request, 'account/logout.html' )
 def signup(request):
     return render(request, 'account/signup.html' )
 def cart(request):

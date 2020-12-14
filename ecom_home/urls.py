@@ -19,6 +19,7 @@ urlpatterns = [
     path('calculater',views.calculater,name='calculater'),
     path('be_seller_approve/', views.be_seller_approve, name='be_seller_approve'),
     path('login',views.login,name='login'),
+    path('logout',views.logout,name='logout'),
     path('product_listing',views.product_listing,name='product_listing'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('draft/', views.draft, name='draft'),
