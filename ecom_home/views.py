@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 import time
 from django.utils import timezone
 
+from .decorators import seller_active
 from .forms import CheckoutForm
 
 from django.views.generic import ListView, DetailView, View
@@ -23,32 +24,19 @@ from .mixins import SellerAccountMixin
 from .models import SellerAccount
 from django.views.generic.edit import FormMixin
 
+# decorators
+
+# @login_required
+# def seller_active(request):
+#     user = request.user
+#     if SellerAccount.objects.filter(user=user).exists():
+#         pass
+#     else:
+#         messages.info(request, "Not ativated account.")
+#         return redirect("ecom_home:seller_account")           
+
+
 # Create your views here.
-# def index(request):
-#     context = {
-#        "products":Products.objects.all()
-#    }
-#     return render(request, 'index.html',context )
-
-# firebase 
-
-
-# default_app = firebase_admin.initialize_app()
-# config = {
-#     "apiKey": "AIzaSyB2dcKOFsNIcAc0yOGAvMaNCcaVRYe4Fq8",
-#     "authDomain": "protean-sensor-278302.firebaseapp.com",
-#     "databaseURL": "https://ecom-c8c63-default-rtdb.firebaseio.com/",
-#     "projectId": "protean-sensor-278302",
-#     "storageBucket": "protean-sensor-278302.appspot.com",
-#     "serviceAccount": "static\protean-sensor-278302-firebase-adminsdk-c67u8-e63e2fd2dc.json",
-#     "messagingSenderId": "111376756390"
-# }
-# # 
-# firebase = pyrebase.initialize_app(config)
-# auth = firebase.auth()
-# firebase 
-
-
 class indexView(ListView):
     model = Item
     paginate_by = 25
@@ -517,7 +505,8 @@ def dashboard(request):
 
 #seller  
 @login_required  
-def seller_product_post(request , Type):
+@seller_active    
+def seller_product_post(request , Type ):
     object_list3 = SUB_CATEGORY_Type.objects.get(id=Type)
     object_list4 = SHIPPING_MODE.objects.all()
     
@@ -572,6 +561,8 @@ def seller_product_post(request , Type):
 
     return render(request, 'PRODUCT_LISTING/seller_product_post.html' , data )
 
+@login_required
+@seller_active
 def Category(request ):
     object_list = CATEGORY.objects.all()
     
@@ -581,7 +572,10 @@ def Category(request ):
         # print(cat)  
         # return redirect("/Sub_Category")
             
-    return render(request, 'category\category.html', data )      
+    return render(request, 'category\category.html', data )    
+
+@login_required
+@seller_active
 def Sub_Category(request, Category ):
     
     
@@ -593,7 +587,8 @@ def Sub_Category(request, Category ):
     
 
              
-    return render(request, 'category\sub_category\sub_category.html', data    )      
+    return render(request, 'category\sub_category\sub_category.html', data    ) 
+
 def Type(request , Sub_Category ): 
     object_list2 = SUB_CATEGORY.objects.get(id=Sub_Category)
     object_list = SUB_CATEGORY_Type.objects.filter(Sub_Category=Sub_Category)
@@ -605,7 +600,7 @@ def Type(request , Sub_Category ):
             
     return render(request, 'category\\sub_category\\type\\type.html', data , )      
 @login_required
-# @user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 
 def review_seller_product(request , slug_by_seller):
     seller_item = Item_by_seller.objects.get(slug_by_seller=slug_by_seller)
@@ -735,8 +730,10 @@ def be_seller_approve(request):
 
 def sell_with_us(request):
 
-    return render(request, 'sell_with_us.html')     
+    return render(request, 'sell_with_us.html') 
 
+@login_required    
+@seller_active
 def product_listing(request):
 
     return render(request, 'PRODUCT_LISTING\product_listing.html')  
@@ -748,6 +745,8 @@ def navbar(request):
 
     return render(request, 'ORDERS\navbar.html', {'data1':data1})    
 
+@login_required    
+@seller_active
 def Orders(request):
     # usr = request.user
     usr1 = SellerAccount.objects.get(user=request.user)
@@ -776,10 +775,14 @@ def Orders(request):
     return render(request, 'ORDERS\Orders.html', {'data':data , 'data1':data1 , 'data2':data2})   
 
 
-
+@login_required    
+@seller_active
 def Orders_details(request):
 
-    return render(request, 'ORDERS\Orders_details.html')    
+    return render(request, 'ORDERS\Orders_details.html')   
+
+@login_required    
+@seller_active     
 def New_Orders(request):
     usr1 = SellerAccount.objects.get(user=request.user)
     # for all order
@@ -801,19 +804,32 @@ def New_Orders(request):
         print(order_received)
 
     return render(request, 'ORDERS\\New_Orders.html' ,{'data':data , 'data1' : data1 , 'data2':data2} )    
+
+@login_required    
+@seller_active    
 def New_Orders_details(request):
 
-    return render(request, 'ORDERS\\New_Orders_details.html')    
-   
+    return render(request, 'ORDERS\\New_Orders_details.html')  
+
+@login_required    
+@seller_active  
 def Shipped(request):
 
-    return render(request, 'ORDERS\Shipped.html')    
+    return render(request, 'ORDERS\Shipped.html')  
+
+@login_required    
+@seller_active      
 def Shipped_details(request):
 
-    return render(request, 'ORDERS\Shipped_details.html')    
+    return render(request, 'ORDERS\Shipped_details.html')   
+
+@login_required    
+@seller_active     
 def Pending_Orders(request):
 
-    return render(request, 'ORDERS\Pending_Orders.html')    
+    return render(request, 'ORDERS\Pending_Orders.html') 
+@login_required    
+@seller_active       
 def Pending_Orders_details(request):
 
     return render(request, 'ORDERS\Pending_Orders_details.html')    
@@ -830,7 +846,8 @@ def Return_details(request):
 
     return render(request, 'ORDERS\Return_details.html')    
 
-
+@login_required    
+@seller_active
 def draft(request):
     seller1 = user = request.user
     seller_un =  SellerAccount.objects.get(user__username=request.user)
@@ -844,7 +861,8 @@ def draft(request):
     # template_name = "draft.html"
 
 
-
+@login_required    
+@seller_active
 def draft_detail(request , slug_by_seller):
 
     seller_item = Item_by_seller.objects.get(slug_by_seller=slug_by_seller)
@@ -908,7 +926,8 @@ def pending(request):
     
             
     return render(request, 'PRODUCT_LISTING/pending.html', data )       
-
+@login_required    
+@seller_active
 def approved(request):
     seller1 = user = request.user
     seller_un =  SellerAccount.objects.get(user__username=request.user)
@@ -928,6 +947,10 @@ def approved(request):
 
 
     return render(request, 'PRODUCT_LISTING/approved.html', data )  
+
+
+@login_required    
+@seller_active    
 def Inventory(request):
     seller1 = user = request.user
     seller_un =  SellerAccount.objects.get(user__username=request.user)
@@ -964,7 +987,8 @@ def calculater(request):
 def adminn(request):
     
     return render(request, 'ADMIN/adminn.html')     
-@login_required
+@login_required    
+@seller_active
 def update_profile(request):
     seller1 = SellerAccount.objects.get(user__username=request.user)
     ID = seller_address.objects.filter(seller=seller1)
