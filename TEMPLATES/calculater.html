@@ -120,6 +120,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
 <!-- side cat +++ -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+{% load crispy_forms_tags %}  
 {% load i18n %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
 <script>
     $(document).ready(function () {
@@ -671,6 +672,13 @@
                         <a href="/signup"><button class="btn btn-primary w-full"><a href="/signup">Register Now</a></button></a> .
                     </div>
                 </div>
+                <!-- <div class="row" style="text-align: center; justify-content: center;" >
+                    <div class="col " >
+                        <p style="color: red;"> Don't Have an Account? </p>
+                        {% blocktrans %}Don't Have an Account?
+        <a href="{{ signup_url }}">Register</a> First.{% endblocktrans %}
+                    </div>
+                </div> -->
                 
 
                 
@@ -680,7 +688,9 @@
 
 </section>
 <br>
-
+<div>
+    {% include "footer/footer.html" %}
+</div>
 
 <!-- <section>
 

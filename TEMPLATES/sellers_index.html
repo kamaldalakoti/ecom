@@ -1,11 +1,12 @@
 <style>
     .form1 {
-        position: relative!important;
-        top: 70px!important;
+        position: relative !important;
+        top: 70px !important;
         padding: 20px;
     }
+
     .nav_base {
-        display: none!important;
+        display: none !important;
     }
 </style>
 <!-- navbar -->
@@ -14,12 +15,12 @@
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
     }
-    
+
     .topnav {
         overflow: hidden;
         background-color: #333;
     }
-    
+
     .topnav a {
         float: left;
         display: block;
@@ -29,40 +30,43 @@
         text-decoration: none;
         font-size: 17px;
     }
-    
+
     .topnav a:hover {
         background-color: #ddd;
         color: black;
     }
-    
+
     .topnav a.active {
         background-color: #4CAF50;
         color: white;
     }
-    
+
     .topnav .icon {
         display: none;
     }
-    
+
     @media screen and (max-width: 12000px) {
         .topnav a:not(:first-child) {
             display: none;
         }
+
         .topnav a.icon {
             float: right;
             display: block;
         }
     }
-    
+
     @media screen and (max-width: 12000px) {
         .topnav.responsive {
             position: relative;
         }
+
         .topnav.responsive .icon {
             position: absolute;
             right: 0;
             top: 0;
         }
+
         .topnav.responsive a {
             float: none;
             display: block;
@@ -93,29 +97,36 @@
     <a href="/calculater" id="a4">Pricing</a>
     <a href="#" id="a5">Advertising</a>
     <a href="#" id="a6">Reports</a>
-    <a href="dashboard/" id="a7">My Account</a>
+    <a href="/dashboard" id="a7">My Account</a>
 
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
-<form class="form1" method="POST">
-    {% csrf_token %}
+<section>
+    <div>
+        <form class="form1" method="POST">
+            {% csrf_token %}
 
-    <div class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" name="seller_name" id="seller_name">
-    </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="seller_name" id="seller_name">
+            </div>
 
-    <div class="form-group">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-          Request to be seller
-        </label>
-        </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Request to be seller
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Post</button>
-</form>
+    <div class="my-20">
+        {% include "footer/footer.html" %}
+    </div>
+</section>
 {% endblock body %}
