@@ -83,7 +83,7 @@
  */
     .sec3 {
         text-align: center;
-    } 
+    }
 
     .inpt {
         margin-top: 3px;
@@ -91,7 +91,6 @@
         width: 100px;
         padding-left: 5px;
     }
-    
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -120,7 +119,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css">
 <!-- side cat +++ -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-{% load crispy_forms_tags %}  
+{% load crispy_forms_tags %} {% load account %}
 {% load i18n %} {% load static %} {% load cart_template_tags %} {% block title %} {% endblock title %} {% block body %}
 <script>
     $(document).ready(function () {
@@ -284,7 +283,7 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
-<section class="sec"  onload="myload()">
+<section class="sec" onload="myload()">
     <!-- <h2 style="text-align: start;"><a href="/">Home</a></h2> -->
     <h1 style="text-align: center; color: rgb(32, 119, 97); ">PRICING CALCULATER</h1>
     <section class="sec2 " id='sec2'>
@@ -305,11 +304,11 @@
                 </select>
                 <br> <input type="number" style="width: 50px;" id="show_only" disabled="">% Marketplace fee for this
                 catagory
-<br>
-<hr>
-<br>
+                <br>
+                <hr>
+                <br>
                 <div class="flex row w-full " style="justify-content: center;">
-                    <div class="col w-full" >
+                    <div class="col w-full">
 
 
 
@@ -320,7 +319,7 @@
                         </select>
                     </div>
 
-                    <div class="col w-full" >
+                    <div class="col w-full">
 
                         Enter product selling price- <input type="number" id="price1" class="inpt"> include shiping
                         charge
@@ -362,7 +361,7 @@
                 <div class="row">
                     <div class="col">
                         <p> weight : <br> <input type="number" placeholder="W in kg" class="inpt w-full" id="id-proW">
-                            </p</p>
+                            </p< /p>
 
                     </div>
                     <div class="col">
@@ -539,7 +538,7 @@
                         });
                     });
                 </script>
-<br>
+                <br>
                 <div class="row w-full" style="text-align: center;">
                     <div class="col">
 
@@ -555,14 +554,15 @@
                     </div>
                 </div>
                 <div>
-                    <input type="text" class="w-full" style="width: 50px; margin-top: 5px; border: 1px solid black;" id="sp" disabled="">Shipping price
+                    <input type="text" class="w-full" style="width: 50px; margin-top: 5px; border: 1px solid black;"
+                        id="sp" disabled="">Shipping price
                     <button type="button" class="" data-toggle="modal" data-target="#exampleModal1">
-    
+
                         <i class="fa fa-question-circle" style="font-size:24px ; margin-top:2px ;color: cadetblue;">
                         </i>
                     </button>
                 </div>
-                
+
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal1" tabindex="-2" role="dialog"
@@ -585,20 +585,20 @@
                 <br>
                 <hr>
                 <div class="row " style="justify-content: center;">
-                    <div class="col w-full" style="justify-content: center;" > 
+                    <div class="col w-full" style="justify-content: center;">
 
                         <p><b>Enter product actuall price : <br><input type="number" class="inpt w-50" id="ac"></b></p>
                     </div>
                 </div>
-                <div class="row " >
-                    <div class="col w-full" > 
+                <div class="row ">
+                    <div class="col w-full">
 
-                        <button onclick='return false;' style="padding: 2px; width: 200px; margin: 5px;" class="btn btn-primary"
-                        id="ac3">Calculate</button>
+                        <button onclick='return false;' style="padding: 2px; width: 200px; margin: 5px;"
+                            class="btn btn-primary" id="ac3">Calculate</button>
                     </div>
                 </div>
-                
-                
+
+
                 <script>
                     $("#ac3").click(function ()
                     // $("#ac3, #id-1, #id-2,#id-3 , #show_only, #show_only3 , #ac").click(function()
@@ -645,14 +645,14 @@
                     });
                 </script>
 
-                <br>    
+                <br>
                 <hr>
                 <br>
                 <div class="row" style="justify-content: center;">
                     <div class="col">
                         <p><b>Total almorians fee : <br> <input type="number" id="Taf" class="inpt w-full" readonly />
-                            <br> including 18% GST
-                        </b></p>
+                                <br> including 18% GST
+                            </b></p>
                     </div>
                     <div class="col">
                         <p><b>You Make : <br> <input type="number" id="youM" class="inpt w-full" readonly /> </b></p>
@@ -666,11 +666,14 @@
                 <br>
                 <hr>
                 <br>
-                <div class="row" style="text-align: center; justify-content: center;" >
-                    <div class="col " >
+                <div class="row" style="text-align: center; justify-content: center;">
+                    <div class="col ">
                         <p style="color: red;"> Don't Have an Account? </p>
-                        <a href="/signup"><button class="btn btn-primary w-full"><a href="/signup">Register Now</a></button></a> .
+                        <a href="/accounts/signup/"><button class="btn btn-primary w-full"><a
+                                    href="/accounts/signup/">Register
+                                    Now</a></button></a> .
                     </div>
+
                 </div>
                 <!-- <div class="row" style="text-align: center; justify-content: center;" >
                     <div class="col " >
@@ -679,9 +682,9 @@
         <a href="{{ signup_url }}">Register</a> First.{% endblocktrans %}
                     </div>
                 </div> -->
-                
 
-                
+
+
             </section>
         </form>
     </section>
